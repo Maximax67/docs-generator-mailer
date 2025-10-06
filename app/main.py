@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Header, HTTPException, Request, Response
+from fastapi import FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Dict, Optional
@@ -33,13 +33,13 @@ def verify_token(x_api_token: Optional[str]) -> None:
 
 
 @app.get("/")
-async def status(request: Request, response: Response) -> Dict[str, str]:
+async def status() -> Dict[str, str]:
     return {"status": "ok"}
 
 
 @app.post("/send-email")
 async def send_email_endpoint(
-    request: EmailRequest, response: Response, x_api_token: Optional[str] = Header(None)
+    request: EmailRequest, x_api_token: Optional[str] = Header(None)
 ) -> Dict[str, str]:
     verify_token(x_api_token)
 

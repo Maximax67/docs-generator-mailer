@@ -16,12 +16,6 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
-    expose_headers=[
-        "Retry-After",
-        "X-RateLimit-Reset",
-        "X-RateLimit-Limit",
-        "X-RateLimit-Remaining",
-    ],
 )
 
 

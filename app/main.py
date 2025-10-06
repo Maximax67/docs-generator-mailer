@@ -38,7 +38,7 @@ def verify_token(x_api_token: Optional[str]) -> None:
         raise HTTPException(status_code=401, detail="Invalid API Token")
 
 
-@app.get("")
+@app.get("/")
 async def status(request: Request, response: Response) -> Dict[str, str]:
     return {"status": "ok"}
 
